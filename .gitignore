@@ -3,3 +3,4 @@ venv/
 vrnetlab/
 __pycache__/
 *.pyc
+.vscode/

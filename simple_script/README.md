@@ -36,7 +36,7 @@ topology:
 
 ### 2. Python script
 
-[Python script](bgp_script.py) structure:
+[Python script](./script.py) structure:
 
 ```python
 import time
@@ -63,7 +63,7 @@ Run the script:
 
 ```bash
 source ~/dir/to/venv/bin/activate
-python3 bgp_script.py
+python3 script.py
 ```
 
 SSH to a router:
