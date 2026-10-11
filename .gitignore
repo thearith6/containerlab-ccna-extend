@@ -4,3 +4,5 @@ vrnetlab/
 __pycache__/
 *.pyc
 .vscode/
+template/
+newlab.sh
