@@ -4,7 +4,12 @@ Testing an automation script using Netmiko on Containerlab.
 
 ## Scenario
 
-![topology](image.png)
+```mermaid
+graph TD
+  r1---r2
+  pc1---r1
+  pc2---r2
+```
 
 ## Action
 
