@@ -1,0 +1,28 @@
+name: 002-VLAN-STP
+
+mgmt:
+  network: clab
+  ipv4-subnet: 172.20.20.0/24
+
+topology:
+  nodes:
+    SW1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.18.2
+      mgmt-ipv4: 172.20.20.11
+      type: l2
+    SW2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.18.2
+      mgmt-ipv4: 172.20.20.12
+      type: l2
+    SW3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:L2-17.18.2
+      mgmt-ipv4: 172.20.20.13
+      type: l2
+
+  links:
+    - endpoints: ["SW1:e0/2","SW2:e0/1"]
+    - endpoints: ["SW1:e0/3","SW3:e0/1"]
+    - endpoints: ["SW2:e0/3","SW3:e0/2"]

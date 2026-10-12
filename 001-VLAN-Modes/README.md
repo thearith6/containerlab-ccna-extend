@@ -33,7 +33,7 @@ SW2---pc4
                  [sw2,pc3], [sw2,pc4]
 ```
 
-2. Configuration [Python Script](script.py)
+2. Configuration [Python Script](script.py):
 ```
 Two main functions, one for Switch, one for end hosts.
   1. Switch: Loop through SW1 and SW2, identical configurations (vlan, switchport modes, trunk).
