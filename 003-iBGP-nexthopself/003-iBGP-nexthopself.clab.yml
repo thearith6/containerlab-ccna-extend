@@ -1,0 +1,29 @@
+name: 003-iBGP-nexthopself
+
+mgmt:
+  network: clab
+  ipv4-subnet: 172.20.20.0/24
+
+topology:
+  nodes:
+    r1:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.18.2
+      mgmt-ipv4: 172.20.20.11
+    r2:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.18.2
+      mgmt-ipv4: 172.20.20.12
+    r3:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.18.2
+      mgmt-ipv4: 172.20.20.13
+    r4:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.18.2
+      mgmt-ipv4: 172.20.20.14
+
+  links:
+    - endpoints: ["r1:e0/1", "r2:e0/1"]
+    - endpoints: ["r2:e0/2", "r3:e0/1"]
+    - endpoints: ["r3:e0/2", "r4:e0/1"]
