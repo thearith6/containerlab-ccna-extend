@@ -1,4 +1,4 @@
-name: 003-iBGP-nexthopself
+name: 004-BGP-summaryroute
 
 mgmt:
   network: clab

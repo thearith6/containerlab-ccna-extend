@@ -1,4 +1,4 @@
-# 004-iBGP-summaryroute
+# 004-BGP-summaryroute
   BGP configuration and iBGP summaryroute (need static route Null0)
   
 ## Scenario
