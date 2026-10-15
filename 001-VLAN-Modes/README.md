@@ -44,7 +44,7 @@ Two main functions, one for Switch, one for end hosts.
 
 ## Result
 1. Linux alpine:
-  - Open shell: `docker exec -it clab.name.pc sh`
+  - Open shell: `docker exec -it clab-name-pc sh`
   - Use subprocess, can't push config via ssh like SW.
   - Manual ip setup: `ip addr add ip/mask dev eth1`, `ip link set eth1 up`
 
