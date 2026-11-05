@@ -1,6 +1,6 @@
 # 001-VLAN-Modes
 
-Simple VLAN configurations automation using python.
+VLAN access ports and an 802.1Q trunk between two switches, configured with a Python (Netmiko) script.
 
 ## Scenario
 ``` mermaid
@@ -19,15 +19,15 @@ SW2---pc4
   SW2:
     e0/2 --- pc3 (VLAN 10) 192.168.10.20/24
     e0/3 --- pc4 (VLAN 20) 192.168.20.20/24
-  SW1: e0/1 --- SW2: e0/2 (Trunk)
+  SW1: e0/1 --- SW2: e0/1 (Trunk)
 ```
 
 ## Action
-1. Topology Building  [YAML File](001-VLAN-MODES.clab.yml):
+1. Topology Building  [YAML File](001-VLAN-Modes.clab.yml):
 ```
   topology:
     nodes:
-      SW1, SW2, SW3, SW4, pc1, pc2, pc3, pc4
+      SW1, SW2, pc1, pc2, pc3, pc4
     links:
       endpoints: [sw1,sw2], [sw1,pc1], [sw1,pc2]
                  [sw2,pc3], [sw2,pc4]

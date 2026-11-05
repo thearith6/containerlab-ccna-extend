@@ -1,5 +1,5 @@
 # 003-iBGP-nexthopself
-  BGP configuration and iBGP next-hop-self practice lab.
+  eBGP across three autonomous systems, and why an iBGP edge router needs `next-hop-self`.
   
 ## Scenario
 ![topology](image.png)

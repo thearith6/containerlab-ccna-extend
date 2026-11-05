@@ -1,5 +1,5 @@
 # 004-BGP-summaryroute
-  BGP configuration and iBGP summaryroute (need static route Null0)
+  BGP summary route: advertising an aggregate prefix, which needs a static route to Null0.
   
 ## Scenario
 ![topology](image.png)
@@ -35,7 +35,7 @@ AS 400:
 2. Neighbor forming: `router bgp as-number` `neighbor [their-ip] remote-as [their-as]`
 ```
   - r1: `router bgp 200` `neighbor 10.0.12.2 remote-as 200` `neighbor 10.0.13.2 remote-as 200`
-  - r2: `router bgp 200` `neighbor 10.0.12.1 remote-as 100` `neighbor 10.0.23.2 remote-as 200`
+  - r2: `router bgp 200` `neighbor 10.0.12.1 remote-as 200` `neighbor 10.0.23.2 remote-as 200`
   - r3: `router bgp 200` `neighbor 10.0.23.1 remote-as 200` `neighbor 10.0.13.1 remote-as 200`
         `neighbor 10.0.23.1 next-hop-self` `neighbor 10.0.13.2 next-hop-self`
         `neighbor 10.0.34.2 remote-as 300` 
@@ -53,10 +53,10 @@ AS 400:
 ```
 ## Result & Notes
 1. BGP only advertise routes exist on routing table. 
-  - r2: `network 10.0.0.0 mask 255.255.0.0` not advertised until all these routes exist in routing table (our table only has few in this range).
+  - r3: `network 10.0.0.0 mask 255.255.0.0` not advertised until all these routes exist in routing table (our table only has few in this range).
   - fix: `ip route 10.0.0.0 255.255.0.0 Null0` static route Null0 enable all these routes in routing table.
 2. r1 ping r5 by `ping 5.5.5.5`, without specify source, r1 pick its interface ip 10.0.13.1 as source ip.
-r5 know 10.0.13.1 (advertised by r2), ping works.
+r5 knows 10.0.13.1 (covered by the 10.0.0.0/16 summary advertised by r3), so the ping works.
 3. LAB:
 - ping:
 ```
@@ -110,7 +110,7 @@ B        4.4.4.4 [20/0] via 10.0.34.2, 01:22:29
       5.0.0.0/32 is subnetted, 1 subnets
 B        5.5.5.5 [20/0] via 10.0.34.2, 01:22:29
       10.0.0.0/8 is variably subnetted, 8 subnets, 3 masks
-S        10.0.0.0/16 is directly connected, Null0 ############################### 
+S        10.0.0.0/16 is directly connected, Null0
 O        10.0.12.0/30 [110/20] via 10.0.23.1, 01:23:06, Ethernet0/1
                       [110/20] via 10.0.13.1, 00:05:36, Ethernet0/3
 C        10.0.13.0/30 is directly connected, Ethernet0/3
